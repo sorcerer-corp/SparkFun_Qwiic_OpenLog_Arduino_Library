@@ -280,7 +280,7 @@ boolean OpenLog::sendCommand(uint8_t registerNumber, String option1)
 
   if (_i2cPort->endTransmission() != 0)
   {
-#ifndef __SAMD21G18A__
+#ifndef __SAMD51__
     return (false);
 #else
     sendCommand(registerNumber, option1); // Retry
@@ -299,7 +299,7 @@ size_t OpenLog::write(uint8_t character)
   _i2cPort->write(character);
   if (_i2cPort->endTransmission() != 0)
   {
-#ifndef __SAMD21G18A__
+#ifndef __SAMD51__
     return (false);
 #else
     write(character); // Retry
@@ -328,7 +328,7 @@ int OpenLog::writeString(String string)
 
   if (_i2cPort->endTransmission() != 0)
   {
-#ifndef __SAMD21G18A__
+#ifndef __SAMD51__
     return (false);
 #else
     writeString(string); // Retry
@@ -345,7 +345,7 @@ bool OpenLog::syncFile()
 
   if (_i2cPort->endTransmission() != 0)
   {
-#ifndef __SAMD21G18A__
+#ifndef __SAMD51__
     return (false);
 #else
     syncFile(); // Retry
